@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "297663297270",
+    "project_id": "ziad-heikel-app",
+    "storage_bucket": "ziad-heikel-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297663297270:android:7e0126a27c38233dc15ed7",
+        "android_client_info": {
+          "package_name": "com.example.physical_therapy_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCzNKGZ3pfm4rMcv6ZizMsk3jh9okmO20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
