@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                      DefaultText(
-                        text: 'Anterior approach',
+                        text: 'Posterior approach',
                         color: Colors.black,
                       fontSize: 23,
                       fontWeight: FontWeight.w600,
