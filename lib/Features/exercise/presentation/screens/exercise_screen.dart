@@ -1,16 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:physical_therapy_app/Features/exercise/presentation/widgets/custom_divider.dart';
-import 'package:physical_therapy_app/Features/exercise/presentation/widgets/custom_exercise_row.dart';
+import 'package:physical_therapy_app/Features/exercise/presentation/widgets/exercise_body.dart';
 import 'package:physical_therapy_app/core/utils/constances.dart';
-import 'package:physical_therapy_app/core/utils/strings.dart';
+import 'package:physical_therapy_app/core/utils/media_query_values.dart';
 import 'package:physical_therapy_app/core/widgets/default_text.dart';
-import 'package:physical_therapy_app/core/widgets/main_screen_container.dart';
-import 'package:physical_therapy_app/generated/assets.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class ExercisePage extends StatelessWidget {
+class ExercisePage extends StatefulWidget {
   const ExercisePage({
     super.key,
   });
+
+  @override
+  State<ExercisePage> createState() => _ExercisePageState();
+}
+
+class _ExercisePageState extends State<ExercisePage> {
+  late YoutubePlayerController _youtubePlayerController;
+
+  @override
+  void initState() {
+    super.initState();
+    _youtubePlayerController = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(
+              'https://youtu.be/5zcz-VuCgyY') ??
+          'X7xtJIRF0NI',
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+        loop: true,
+        hideThumbnail: true,
+        isLive: false,
+        forceHD: false,
+        useHybridComposition: false,
+      ),
+    );
+  }
+
+  @override
+  void deactivate() {
+    // Pauses video while navigating to next page.
+    _youtubePlayerController.pause();
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    _youtubePlayerController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,56 +63,37 @@ class ExercisePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body:  const SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              MainScreenContainer(text: AppStrings.exerciseText1),
-              SizedBox(
-                height: 15,
-              ),
-              CustomExerciseRow(
-                image: Assets.imagesExercise1,
-                text1: AppStrings.exerciseText2,
-                text2: AppStrings.exerciseText3,
-              ),
-              CustomDivider(),
-              CustomExerciseRow(
-                image: Assets.imagesExercise2,
-                text1: AppStrings.exerciseText4,
-                text2: AppStrings.exerciseText5,
-              ),
-              CustomDivider(),
-              CustomExerciseRow(
-                image: Assets.imagesExercise3,
-                text1: AppStrings.exerciseText6,
-                text2: AppStrings.exerciseText7,
-              ),
-              CustomDivider(),
-              CustomExerciseRow(
-                image: Assets.imagesExercise4,
-                text1: AppStrings.exerciseText8,
-                text2: AppStrings.exerciseText9,
-              ),
-              CustomDivider(),
-              CustomExerciseRow(
-                image: Assets.imagesExercise5,
-                text1: AppStrings.exerciseText10,
-                text2: AppStrings.exerciseText11,
-              ),
-              CustomDivider(),
-              CustomExerciseRow(
-                image: Assets.imagesExercise6,
-                text1: AppStrings.exerciseText12,
-                text2: AppStrings.exerciseText13,
-              ),
-            ],
+      body: Column(
+        children: [
+          SizedBox(
+            height: context.height * 1 / 3.7,
+            child: YoutubePlayer(
+             // aspectRatio: 16 / 9,
+              controller: _youtubePlayerController,
+              showVideoProgressIndicator: true,
+              progressColors: const ProgressBarColors(
+                  playedColor: kPrimaryColor, handleColor: kPrimaryColor),
+              progressIndicatorColor: kPrimaryColor,
+              bottomActions: [
+                CurrentPosition(),
+                ProgressBar(
+                  isExpanded: true,
+                  colors: const ProgressBarColors(
+                    playedColor: kPrimaryColor,
+                    handleColor: kPrimaryColor,
+                  ),
+                ),
+                RemainingDuration(),
+              ],
+            ),
           ),
-        ),
+          const Expanded(
+            child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: ExerciseBody()),
+          ),
+        ],
       ),
     );
   }
 }
-
-

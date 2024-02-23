@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:physical_therapy_app/core/utils/constances.dart';
-import 'package:physical_therapy_app/core/utils/style.dart';
+import 'package:physical_therapy_app/core/utils/media_query_values.dart';
 
 class SlidingText extends StatelessWidget {
   const SlidingText({
@@ -16,10 +15,7 @@ class SlidingText extends StatelessWidget {
       animation: slidingAnimation,
       builder: (context, _) => SlideTransition(
         position: slidingAnimation,
-        child:  Text(
-          'مرحبًا بك نتمني لك الشفاء العاجل',style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w600,color: darkBlueGray ),
-          textAlign: TextAlign.center,
-        ),
+        child:  Image.asset('assets/images/Logo.png',height: context.height*.125),
       ),
     );
   }
