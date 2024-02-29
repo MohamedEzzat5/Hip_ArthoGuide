@@ -11,7 +11,7 @@ class CustomDivider extends StatelessWidget {
     return const Divider(
       thickness: 2,
       color: Colors.black,
-      height: 30,
+      height: 40,
     );
   }
 }

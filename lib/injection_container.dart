@@ -1,8 +1,11 @@
 import 'package:get_it/get_it.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:physical_therapy_app/Features/auth/data/repos/auth_repo.dart';
 import 'package:physical_therapy_app/Features/auth/data/repos/auth_repo_impl.dart';
 import 'package:physical_therapy_app/Features/auth/presentation/manger/login_cubit/login_cubit.dart';
 import 'package:physical_therapy_app/Features/auth/presentation/manger/register_cubit/register_cubit.dart';
+
+import 'core/network/network_info.dart';
 
 
 
@@ -13,8 +16,8 @@ final sl = GetIt.instance;
 Future<void> init() async {
 //! features
   //Blocs
-  sl.registerFactory(() => RegisterCubit(authRepo: sl()));
-  sl.registerFactory(() => LoginCubit(authRepo: sl()));
+  sl.registerFactory(() => RegisterCubit(authRepo: sl(),networkInfo: sl()));
+  sl.registerFactory(() => LoginCubit(authRepo: sl(),networkInfo: sl()));
 
   //use Cases
   // sl.registerLazySingleton(() => GetRandomQuote(quoteRepository: sl()));
@@ -26,11 +29,11 @@ Future<void> init() async {
 
 //!core
   //network info
-  // sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(internetConnectionChecker: sl()));
+   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(internetConnectionChecker: sl()));
 
 
 //! External
 // final sharedPreferences = await SharedPreferences.getInstance();
 // sl.registerLazySingleton(() => sharedPreferences);
-// sl.registerLazySingleton(() => InternetConnectionChecker());
+ sl.registerLazySingleton(() => InternetConnectionChecker());
 }

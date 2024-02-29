@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:physical_therapy_app/Features/exercise/presentation/widgets/exercise_body.dart';
+import 'package:go_router/go_router.dart';
+import 'package:physical_therapy_app/core/utils/app_router.dart';
 import 'package:physical_therapy_app/core/utils/constances.dart';
-import 'package:physical_therapy_app/core/utils/media_query_values.dart';
+import 'package:physical_therapy_app/core/widgets/default_button.dart';
 import 'package:physical_therapy_app/core/widgets/default_text.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import '../../../../core/utils/strings.dart';
 
 class ExercisePage extends StatefulWidget {
   const ExercisePage({
@@ -21,12 +23,12 @@ class _ExercisePageState extends State<ExercisePage> {
   void initState() {
     super.initState();
     _youtubePlayerController = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(
-              'https://youtu.be/5zcz-VuCgyY') ??
-          'X7xtJIRF0NI',
+      initialVideoId:
+          YoutubePlayer.convertUrlToId('https://youtu.be/j5EfDxKFruU') ??
+              'X7xtJIRF0NI',
       flags: const YoutubePlayerFlags(
         autoPlay: false,
-        mute: false,
+        mute: true,
         loop: true,
         hideThumbnail: true,
         isLive: false,
@@ -63,12 +65,11 @@ class _ExercisePageState extends State<ExercisePage> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: context.height * 1 / 3.7,
-            child: YoutubePlayer(
-             // aspectRatio: 16 / 9,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            YoutubePlayer(
+              // aspectRatio: 16 / 9,
               controller: _youtubePlayerController,
               showVideoProgressIndicator: true,
               progressColors: const ProgressBarColors(
@@ -86,13 +87,55 @@ class _ExercisePageState extends State<ExercisePage> {
                 RemainingDuration(),
               ],
             ),
-          ),
-          const Expanded(
-            child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                child: ExerciseBody()),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: [
+                  const DefaultText(
+                      text: AppStrings.exerciseText1,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  DefaultMaterialButton(
+                      text: 'تمارين التمدد',
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRouter.kExerciseBody1);
+                      },
+                      height: 60,
+                      elevation: 3,
+                      fontSize: 16),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  DefaultMaterialButton(
+                      text: 'تمارين التقوية',
+                      onPressed: () {GoRouter.of(context).push(AppRouter.kExerciseBody2);},
+                      height: 60,
+                      elevation: 3,
+                      fontSize: 16),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  DefaultMaterialButton(
+                      text: 'تمارين لإستعادة المدي الحركي',
+                      onPressed: () {GoRouter.of(context).push(AppRouter.kExerciseBody3);},                      height: 60,
+                      elevation: 3,
+                      fontSize: 16),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  DefaultMaterialButton(
+                      text: 'تمارين لتحسين التوازن',
+                      onPressed: () {GoRouter.of(context).push(AppRouter.kExerciseBody4);},                      height: 60,
+                      elevation: 3,
+                      fontSize: 16),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

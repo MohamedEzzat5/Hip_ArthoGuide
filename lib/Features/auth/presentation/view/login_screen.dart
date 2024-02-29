@@ -106,14 +106,6 @@ class LoginPage extends StatelessWidget {
                             size: 20,
                             //color: nameFocus.hasFocus ? kPrimaryColor : Colors.grey,
                           ),
-                          inputBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          inputFocusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                color: kPrimaryColor,
-                              )),
                         ),
                        const SizedBox(height: 16.0),
                         DefaultFormField(
@@ -129,14 +121,6 @@ class LoginPage extends StatelessWidget {
                             size: 20,
                             //color: nameFocus.hasFocus ? kPrimaryColor : Colors.grey,
                           ),
-                          inputBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          inputFocusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                color: kPrimaryColor,
-                              )),
                         ),
                         const SizedBox(height: 16.0),
                         DefaultMaterialButton(

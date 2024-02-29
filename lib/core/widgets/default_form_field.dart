@@ -103,7 +103,7 @@ class DefaultFormField extends StatelessWidget {
         controller: controller,
         validator: (data){ if (data!.isEmpty) {
           return 'من فضلك ادخل البيانات';
-        }
+        } return null;
         },
         keyboardType: keyboardType,
         onFieldSubmitted: onFieldSubmitted,
@@ -126,12 +126,20 @@ class DefaultFormField extends StatelessWidget {
             color: labelColor,
           ),
           labelText: labelText,
-          border: inputBorder,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
           enabledBorder: inputEnabledBorder,
           disabledBorder: inputDisabledBorder,
-          focusedBorder: inputFocusedBorder,
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                width: 2,
+                color: kPrimaryColor,
+              )),
           hintText: hintText,
           hintStyle: const TextStyle(
+            fontSize: 16,
             color: Colors.grey,
           ),
           hintTextDirection: TextDirection.rtl,
