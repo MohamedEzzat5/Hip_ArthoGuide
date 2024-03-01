@@ -26,44 +26,33 @@ class ExerciseBody1 extends StatelessWidget {
       ),
       body: const SingleChildScrollView(
         child:  Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.symmetric(vertical: 16.0,horizontal: 8),
           child: Column(
             children: [
               CustomExerciseRow(
-                image: Assets.imagesExercise1,
-                text1: AppStrings.exerciseText2,
-                text2: AppStrings.exerciseText3,
+                image: Assets.imagesExercise10,
+                text1: AppStrings.exerciseText18,
+                text2: AppStrings.exerciseText19,
               ),
               CustomDivider(),
               CustomExerciseRow(
-                image: Assets.imagesExercise2,
-                text1: AppStrings.exerciseText4,
-                text2: AppStrings.exerciseText5,
+                image: Assets.imagesExercise9,
+                text1: AppStrings.exerciseText16,
+                text2: AppStrings.exerciseText17,
               ),
               CustomDivider(),
               CustomExerciseRow(
-                image: Assets.imagesExercise3,
-                text1: AppStrings.exerciseText6,
-                text2: AppStrings.exerciseText7,
+                image: Assets.imagesExercise11,
+                text1: AppStrings.exerciseText20,
+                text2: AppStrings.exerciseText21,
               ),
               CustomDivider(),
               CustomExerciseRow(
-                image: Assets.imagesExercise4,
-                text1: AppStrings.exerciseText8,
-                text2: AppStrings.exerciseText9,
+                image: Assets.imagesExercise12,
+                text1: AppStrings.exerciseText22,
+                text2: AppStrings.exerciseText23,
               ),
-              CustomDivider(),
-              CustomExerciseRow(
-                image: Assets.imagesExercise5,
-                text1: AppStrings.exerciseText10,
-                text2: AppStrings.exerciseText11,
-              ),
-              CustomDivider(),
-              CustomExerciseRow(
-                image: Assets.imagesExercise6,
-                text1: AppStrings.exerciseText12,
-                text2: AppStrings.exerciseText13,
-              ),
+
             ],
           ),
         ),

@@ -24,7 +24,7 @@ class ExerciseBody4 extends StatelessWidget {
       ),
       body: const SingleChildScrollView(
         child:  Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.symmetric(vertical: 16.0,horizontal: 8),
           child: Column(
             children: [
               CustomExerciseRow(

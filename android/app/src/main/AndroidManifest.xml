@@ -3,7 +3,7 @@
     <application
         android:label="H ArthroGuide"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:usesCleartextTraffic="true"
         android:enableOnBackInvokedCallback="true">
         <activity

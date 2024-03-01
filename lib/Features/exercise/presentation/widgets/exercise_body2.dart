@@ -13,7 +13,7 @@ class ExerciseBody2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
@@ -25,8 +25,8 @@ class ExerciseBody2 extends StatelessWidget {
         centerTitle: true,
       ),
       body: const SingleChildScrollView(
-        child:  Padding(
-          padding: EdgeInsets.all(16.0),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 16.0,horizontal: 8),
           child: Column(
             children: [
               CustomExerciseRow(
@@ -51,6 +51,24 @@ class ExerciseBody2 extends StatelessWidget {
                 image: Assets.imagesExercise6,
                 text1: AppStrings.exerciseText12,
                 text2: AppStrings.exerciseText13,
+              ),
+              CustomDivider(),
+              CustomExerciseRow(
+                image: Assets.imagesExercise13,
+                text1: AppStrings.exerciseText24,
+                text2: AppStrings.exerciseText25,
+              ),
+              CustomDivider(),
+              CustomExerciseRow(
+                image: Assets.imagesExercise14,
+                text1: AppStrings.exerciseText26,
+                text2: AppStrings.exerciseText27,
+              ),
+              CustomDivider(),
+              CustomExerciseRow(
+                image: Assets.imagesExercise15,
+                text1: AppStrings.exerciseText28,
+                text2: AppStrings.exerciseText29,
               ),
             ],
           ),
